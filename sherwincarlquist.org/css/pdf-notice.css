@@ -1,0 +1,43 @@
+#pdfNoticeOverlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: 0.8;
+	z-index: 200;
+}
+
+#pdfNoticeBox {
+	display: none;
+	position: fixed;
+	top: 35%;
+	left: 50%;
+	width: 300px;
+	margin-left: -161px;
+	background-color: #fff;
+	border: 1px solid #999;
+	padding: 20px;
+	z-index: 201;
+	font: 12px Verdana, Helvetica, sans-serif;
+	text-align: left;
+}
+
+#pdfNoticeMessage {
+	margin: 0 0 15px 0;
+	line-height: 1.4em;
+}
+
+#pdfNoticeClose {
+	display: block;
+	text-align: right;
+	font-weight: bold;
+	color: #333;
+	text-decoration: none;
+}
+
+#pdfNoticeClose:hover {
+	text-decoration: underline;
+}
