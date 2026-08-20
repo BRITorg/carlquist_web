@@ -1,0 +1,23 @@
+
+#dhtmltooltip{
+position: absolute;
+left: -300px;
+width: 150px;
+border: 2px solid red;
+padding: 10px;
+background-color: lightyellow;
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 12px;
+text-decoration: bold;
+visibility: hidden;
+z-index: 100;
+/*Remove below line to remove shadow. Below line should always appear last within this CSS*/
+filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);
+}
+
+#dhtmlpointer{
+position:absolute;
+left: -300px;
+z-index: 101;
+visibility: hidden;
+}

@@ -1,0 +1,183 @@
+body {
+	margin: 0px;
+}
+
+a:link {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	text-decoration: none;
+}
+
+a:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:visited {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #999999;
+	text-decoration: none;
+}
+
+a:active {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FF0000;
+	text-decoration: none;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.mainFrame {
+	width: 800px;
+	position: relative;
+}
+
+.header {
+	background-image: url(../images/header.jpg);
+	width: 800px;
+	position: relative;
+	height: 70px;
+}
+
+.menu {
+	width: 220px;
+	position: relative;
+	top: 10px;
+	float: left;
+	clear: both;
+	left: 0px;
+}
+
+.pageId {
+	position: relative;
+	top: 10px;
+	padding: 0px;
+	left: 0px;
+	width: 565px;
+	float: right;
+	background-image: url(../images/pageId.jpg);
+	background-position: center;
+	height: 50px;
+}
+
+.pageIb {
+	position: relative;
+	top: 10px;
+	padding: 0px;
+	left: 0px;
+	width: 565px;
+	float: right;
+	background-image: url(../images/pageIb.jpg);
+	background-position: center;
+	height: 50px;
+}
+
+.pageWe {
+	position: relative;
+	top: 10px;
+	padding: 0px;
+	left: 0px;
+	width: 565px;
+	float: right;
+	height: 50px;
+	background-image: url(../images/pageWe.jpg);
+}
+
+.menuTop {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-align: center;
+	float: right;
+	height: 15px;
+	width: 400px;
+	position: relative;
+	top: 20px;
+	display: block;
+}
+
+.menuTop a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin-right: 10px;
+	margin-left: 10px;
+	font-size: 10px;
+}
+
+.menuTop2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-align: center;
+	float: right;
+	height: 30px;
+	width: 565px;
+	position: relative;
+	top: 20px;
+	display: block;
+}
+
+.menuTop2 a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin-right: 10px;
+	margin-left: 10px;
+	font-size: 10px;
+}
+
+.pictures {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-align: left;
+	width: 150px;
+	float: left;
+	top: 55px;
+	position: relative;
+	left: 15px;
+	text-decoration: none;
+}
+
+.copy {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	text-align: left;
+	width: 400px;
+	float: right;
+	top: 25px;
+	position: relative;
+}
+
+.copyForm {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	text-align: center;
+	width: 560px;
+	float: right;
+	top: 25px;
+	position: relative;
+}
+
+.footer {
+	width: 800px;
+	position: relative;
+	clear: both;
+	padding: 5px;
+	display: block;
+	top: 40px;
+}
+
+.footer a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin-right: 15px;
+	margin-left: 15px;
+	font-size: 10px;
+}
+
+.footer p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #999999;
+	text-align: center;
+	font-size: 10px;
+}
