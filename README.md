@@ -1,0 +1,81 @@
+# Sherwin Carlquist — Plant Discoveries (Web Archive)
+
+This repository is a preserved copy of **sherwincarlquist.com**, the personal
+website of botanist Sherwin Carlquist, showcasing his research on plant
+discoveries, island biology, wood anatomy, and floral morphology.
+
+🔗 **Live site:** https://britorg.github.io/carlquist_web/
+
+## About this archive
+
+The original site was mirrored with `wget` on **July 2, 2020**, prior to the
+launch of an NSF-funded project on Carlquist's work. That backup is the basis
+for this repository, which is now published via GitHub Pages so the content
+remains publicly accessible.
+
+This git repository contains two primary directories:
+
+[sherwincarlquist.com](sherwincarlquist.com/) - this directory contains the site contents as of 2020-07-02 with some exceptions. PDFs of journal articles from the original site are not included in this repository.
+[sherwincarlquist.org](sherwincarlquist.org/) - this directory contains the original content with minor changes to improve readibility and to augment some information. This version of the content is published to the live site (link above) using GitHub Pages.
+
+The site covers topics including:
+
+- Island biology
+- Tarweeds & silverswords
+- Floral anatomy
+- Ecological and systematic wood anatomy
+- Wood evolution
+- Fern & monocot xylem
+- Leaf anatomy
+- Gnetales
+- Biography & publications
+- Recent work
+
+## Status
+
+This is a static archive of the original site as it existed in 2020. Content,
+images, and links are preserved as captured; some assets or external links
+from the original site may no longer resolve.
+
+A resources page is planned, linking out to related sites, publications, and
+projects connected to Sherwin Carlquist's research.
+
+## Changes made to the .org version
+
+Since the original 2020 mirror, `sherwincarlquist.org` has received the
+following fixes to make it work correctly as a static site on GitHub Pages
+(`sherwincarlquist.com` is left untouched as the historical snapshot):
+
+- **Character encoding**: GitHub Pages serves HTML with an HTTP
+  `charset=utf-8` header that overrides the pages' own charset meta tag. The
+  underlying file bytes were Windows-1252 (mislabeled as ISO-8859-1), which
+  caused smart quotes and em-dashes to render as garbled text online. 23 HTML
+  files and `js/tooltip.js` were converted to real UTF-8 and their meta tags
+  updated to match.
+- **Home page image lightbox**: The Lightbox popup used by the home page's
+  image slideshow was broken because `js/scriptaculous.js` had been saved to
+  disk under the wrong filename, so the script 404'd. The file was renamed
+  correctly and the missing `js/effects.js` and lightbox loading/close-icon
+  images were restored from the Wayback Machine archive of the original
+  live site.
+- **Contact form**: `contacts-comments.html` posts to a CGI script that
+  doesn't exist under GitHub Pages' static hosting. Rather than removing the
+  form, its submit button was disabled so the fields remain visible.
+- **Publication PDF links**: None of the publication PDFs are hosted in this
+  repository, so the 252 PDF links across 27 pages (mostly on
+  `biography-publications.html`) previously led to dead links. Clicking one
+  now shows a small notice explaining the PDF isn't hosted here, instead of
+  navigating to a 404.
+- **Left-nav hover-highlight menus**: The hover-highlight images for the
+  left-side navigation menus (main, island biology, wood evolution) were
+  missing from the repo, so hovering a menu item showed a broken-image icon.
+  The main menu's images were recovered from the Wayback Machine; the island
+  biology and wood evolution submenu images don't exist in any archive, so
+  they were synthesized by applying the same brightness reduction used by
+  the recovered main-menu images to their existing normal-state counterparts.
+
+## Attribution
+
+Original site design and content by [www.HomePageInternational.com](http://www.HomePageInternational.com).
+See the archived [Terms of Use](https://britorg.github.io/carlquist_web/terms-of-use.html)
+for details on use of this material.
