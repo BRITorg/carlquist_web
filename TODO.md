@@ -41,3 +41,25 @@
     notice)
   - "Vessels in ferns: structural, ecological, and evolutionary
     significance" (2001)
+
+- Add schema.org JSON-LD structured data for the publications on
+  `biography-publications.html` (a `ScholarlyArticle` entry per citation,
+  with `identifier` for the DOI, `sameAs` for the Wikidata record,
+  `datePublished`, `author`, and `isPartOf` for the journal). This is the
+  format search engines actually parse for rich results and knowledge-graph
+  linking, and unlike Highwire `citation_*` meta tags it isn't limited to
+  one entity per page, so it fits this site's single shared bibliography
+  page. All the underlying data already exists in
+  `tools/publications/publication-links.json`.
+
+- Add a `sitemap.xml` to help search engines discover and crawl all pages
+  on the site — a small, general, all-upside addition independent of the
+  publication-specific work above.
+
+- Explore using Highwire Press `citation_*` meta tags (what Google Scholar
+  specifically looks for) for the publications. These are page-level and
+  designed for one work per page, which doesn't fit dumping them onto the
+  existing shared `biography-publications.html` list — so this would mean
+  creating a separate dedicated citations page (or one page per
+  publication), linked from the site as its own resource, while leaving the
+  original bibliography page unchanged.
