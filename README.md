@@ -62,10 +62,20 @@ following fixes to make it work correctly as a static site on GitHub Pages
   doesn't exist under GitHub Pages' static hosting. Rather than removing the
   form, its submit button was disabled so the fields remain visible.
 - **Publication PDF links**: None of the publication PDFs are hosted in this
-  repository, so the 252 PDF links across 27 pages (mostly on
-  `biography-publications.html`) previously led to dead links. Clicking one
-  now shows a small notice explaining the PDF isn't hosted here, instead of
-  navigating to a 404.
+  repository, so the 413 PDF links across 27 pages (mostly on
+  `biography-publications.html`, including 161 that were never wired to any
+  notice at all — an earlier case-sensitivity bug missed their uppercase
+  `.PDF` extensions — and so still led straight to dead links) previously
+  404'd or showed only a bare "not hosted" notice. Each `[ PDF ]` link is now
+  an inline disclosure widget: activating it (by click or keyboard) expands
+  to "PDF may be available at these external sources" followed by real DOI,
+  source, and/or Wikidata links, matched against the
+  [Carlquist Publications Dataset](https://github.com/BRITorg/carlquist_publications_dataset).
+  These links are written directly into the static HTML rather than injected
+  by JavaScript, so they're crawlable by search engines and accessible to
+  screen readers by default — `js/pdf-widget.js` only adds the collapse/expand
+  behavior on top. The mapping from each PDF link to its matched publication
+  is kept in `tools/publications/` for future auditing.
 - **Left-nav hover-highlight menus**: The hover-highlight images for the
   left-side navigation menus (main, island biology, wood evolution) were
   missing from the repo, so hovering a menu item showed a broken-image icon.
