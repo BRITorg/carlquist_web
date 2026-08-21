@@ -4,7 +4,7 @@ This repository is a preserved copy of **sherwincarlquist.com**, the personal
 website of botanist Sherwin Carlquist, showcasing his research on plant
 discoveries, island biology, wood anatomy, and floral morphology.
 
-🔗 **Live site:** https://britorg.github.io/carlquist_web/
+**Live site:** https://britorg.github.io/carlquist_web/
 
 ## About this archive
 
@@ -74,8 +74,6 @@ following fixes to make it work correctly as a static site on GitHub Pages
   they were synthesized by applying the same brightness reduction used by
   the recovered main-menu images to their existing normal-state counterparts.
 
-## Attribution
+## About The Sherwin Carlquist Extended Specimen Network
 
-Original site design and content by [www.HomePageInternational.com](http://www.HomePageInternational.com).
-See the archived [Terms of Use](https://britorg.github.io/carlquist_web/terms-of-use.html)
-for details on use of this material.
+This site and web archive are preserved and shared as part of a collaborative project to link and preserve Carlquist's specimens, field images, publications, and archival materials. Details about this project and further Carlquist resources are available at https://britorg.github.io/carlquist_esn/. 
