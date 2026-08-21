@@ -37,9 +37,6 @@ This is a static archive of the original site as it existed in 2020. Content,
 images, and links are preserved as captured; some assets or external links
 from the original site may no longer resolve.
 
-A resources page is planned, linking out to related sites, publications, and
-projects connected to Sherwin Carlquist's research.
-
 ## Changes made to the .org version
 
 Since the original 2020 mirror, `sherwincarlquist.org` has received the
@@ -61,18 +58,17 @@ following fixes to make it work correctly as a static site on GitHub Pages
 - **Contact form**: `contacts-comments.html` posts to a CGI script that
   doesn't exist under GitHub Pages' static hosting. Rather than removing the
   form, its submit button was disabled so the fields remain visible.
-- **Publication PDF links**: None of the publication PDFs are hosted in this
-  repository, so the 413 PDF links across 27 pages (mostly on
-  `biography-publications.html`, including 161 that were never wired to any
-  notice at all — an earlier case-sensitivity bug missed their uppercase
-  `.PDF` extensions — and so still led straight to dead links) previously
-  404'd or showed only a bare "not hosted" notice. Each `[ PDF ]` link is now
+- **Publication PDF links**: Carlquist originally linked directly to PDF files 
+  hosted on his site, but none of these publication PDFs are hosted in this
+  repository, so each `[ PDF ]` link is now
   an inline disclosure widget: activating it (by click or keyboard) expands
   to "PDF may be available at these external sources" followed by real DOI,
   source, and/or Wikidata links, matched against the
   [Carlquist Publications Dataset](https://github.com/BRITorg/carlquist_publications_dataset).
-  These links are written directly into the static HTML rather than injected
-  by JavaScript, so they're crawlable by search engines and accessible to
+  This dataset contains articles that were listed by Carlquist on his site, but not linked so these
+  links have been added to the bibliography page with `[ PDF* ]` and a note clarifying
+  that Carlquist did not originally link these files. 
+  These links are written directly into the static HTML so they're crawlable by search engines and accessible to
   screen readers by default — `js/pdf-widget.js` only adds the collapse/expand
   behavior on top. The mapping from each PDF link to its matched publication
   is kept in `tools/publications/` for future auditing.
