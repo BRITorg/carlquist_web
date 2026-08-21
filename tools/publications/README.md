@@ -31,3 +31,23 @@ were found by manually cross-checking every matched title's site citation
 text and are already corrected in `publication-links.json`. If you re-run
 the matcher, diff its output against the current file rather than trusting
 it blindly, and pay particular attention to numbered-series titles.
+
+## Citations that never had a `[ PDF ]` link at all
+
+`biography-publications.html` also lists some citations that were never
+followed by a `[ PDF ]` link in the first place (`match_publications.py`
+only looks for existing dead-PDF-link markup, so it never saw these). A
+one-off pass matched 41 of these against the dataset by parsing the plain
+citation text directly (year + title), rather than a filename slug — see
+the git history around when this section was added for that script. Those
+41 are marked on the site as `[ PDF* ]` rather than `[ PDF ]`, with the
+panel text "Not originally linked by Carlquist" to distinguish them from
+citations that had a real (if dead) PDF link originally. They're recorded
+in `publication-links.json` under a `unlinked-citation:<citation text>` key
+rather than a PDF path, since there's no original link to key off of.
+
+3 more citations from that same pass had a wrong low/medium-confidence
+match (same numbered-series problem) and were corrected by hand but not yet
+added to the site, and 9 had no confident match in the dataset at all
+(mostly book chapters and non-article notes) — see `TODO.md` at the repo
+root for both lists.
