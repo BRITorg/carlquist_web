@@ -2285,5 +2285,37 @@
     "note": "not originally linked with [ PDF ] on the site; shown as [ PDF* ] instead",
     "doi": "10.1111/j.1095-8339.2007.00667.x",
     "wikidata": "https://www.wikidata.org/wiki/Q60697050"
+  },
+  "unlinked-citation:1999. SEM studies on vessels in ferns. 8. Platyzoma. Australian Jour. of Botany 47: 277-282 (with Edward L. Schneider and Kevin F. Kenneally).": {
+    "title": "SEM Studies on Vessels in Ferns. 8. Platyzoma",
+    "year": 1999,
+    "citation": "1999. SEM studies on vessels in ferns. 8. Platyzoma. Australian Jour. of Botany 47: 277-282 (with Edward L. Schneider and Kevin F. Kenneally).",
+    "note": "not originally linked with [ PDF ] on the site; shown as [ PDF* ] instead",
+    "doi": "10.1071/bt97120",
+    "wikidata": "https://www.wikidata.org/wiki/Q100711189"
+  },
+  "unlinked-citation:2000. SEM studies on vessels in ferns. 14. Ceratopteris, and the significance of widespread vessel occurrence in ferns. Aquatic Botany 66: 1-8 (with Edward L. Schneider).": {
+    "title": "SEM Studies of Vessels in Ferns: 14. Ceratopteris",
+    "year": 2000,
+    "citation": "2000. SEM studies on vessels in ferns. 14. Ceratopteris, and the significance of widespread vessel occurrence in ferns. Aquatic Botany 66: 1-8 (with Edward L. Schneider).",
+    "note": "not originally linked with [ PDF ] on the site; shown as [ PDF* ] instead",
+    "doi": "10.1016/s0304-3770(99)00023-6",
+    "wikidata": "https://www.wikidata.org/wiki/Q139119343"
+  },
+  "unlinked-citation:2000. SEM studies on vessels in the heterophyllous species of Selaginella. Jour. Torrey Bot. Soc. 127: 263-270. (with Edward L. Schneider).": {
+    "title": "SEM Studies on the Vessels of Heterophyllous Species of Selaginella",
+    "year": 2000,
+    "citation": "2000. SEM studies on vessels in the heterophyllous species of Selaginella. Jour. Torrey Bot. Soc. 127: 263-270. (with Edward L. Schneider).",
+    "note": "not originally linked with [ PDF ] on the site; shown as [ PDF* ] instead",
+    "doi": "10.2307/3088644",
+    "url": "https://www.jstor.org/stable/10.2307/3088644",
+    "wikidata": "https://www.wikidata.org/wiki/Q139119342"
+  },
+  "unlinked-citation:1958. Anatomy of Guayana Mutisieae. Part II. Mem. N. Y. Bot. Gard. 10:157-184.": {
+    "title": "Anatomy of the Guayana Mutisieae",
+    "year": 1958,
+    "citation": "1958. Anatomy of Guayana Mutisieae. Part II. Mem. N. Y. Bot. Gard. 10:157-184.",
+    "note": "originally linked on the site with a dead href=\"#\" placeholder (not a real PDF path, so match_publications.py never saw it); no confident match in the Carlquist Publications Dataset or Wikidata (which only has Part I, 1957), but BHL item 150908 (Mem. N.Y. Bot. Gard. v.10) segment 324546 spans pages 157-184, matching this citation's page range exactly",
+    "url": "https://www.biodiversitylibrary.org/part/324546"
   }
 }
