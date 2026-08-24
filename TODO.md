@@ -1,24 +1,23 @@
 # TODO
 
-- Make links for books: the publication-links widget (see
-  `tools/publications/`) currently covers journal articles matched from the
-  Carlquist Publications Dataset; the books and book chapters listed on
-  `biography-publications.html` (e.g. *Comparative Wood Anatomy*, *Tarweeds
-  and Silverswords*) don't yet have equivalent links out to where they can be
-  found.
-
-- QC needed: 8 citations on `biography-publications.html` had no confident
+- QC needed: 5 citations on `biography-publications.html` had no confident
   match in the Carlquist Publications Dataset at all, mostly because they're
-  book chapters, tributes, or notes rather than indexed journal articles —
-  worth a manual look in case the dataset just doesn't cover them:
+  tributes or notes rather than indexed journal articles — worth a manual
+  look in case the dataset just doesn't cover them. (The book chapters that
+  were previously in this list — "Rapateaceae," "Morphology and anatomy,"
+  "Balanopaceae," and "Introduction" — all turned out to be in the dataset
+  after all; they just weren't picked up by the earlier fuzzy-match pass,
+  likely because their short, generic titles collided with other dataset
+  entries. They were matched by hand instead and now have `[ PDF* ]`
+  widgets, same as the books.)
+  - "Japanese Festivals" (1965, with Helen Bauer) — a popular travel book,
+    not a botanical work; not in the Carlquist Publications Dataset or
+    Wikidata (unlike the 7 other books listed under "Books" on
+    `biography-publications.html`, which all matched and now have
+    `[ PDF* ]` widgets)
   - "Terminology of imperforate tracheary elements: a reply" (1986) — only
     the original paper is cataloged, not this response note
-  - "Rapateaceae" (1969, chapter in *Anatomy of the Monocotyledons*)
-  - "Morphology and anatomy" (1969, chapter in *A Short History of Botany in
-    the United States*)
   - "Philip A. Munz, botanist and friend" (1975, tribute, not a paper)
-  - "Balanopaceae" (1989, *Flora of Australia* chapter)
-  - "Introduction" (1995, *Hawaiian Biogeography* book)
   - "Peter H. Raven—recipient of the 1996 Asa Gray Award" (1997, award
     notice)
   - "Vessels in ferns: structural, ecological, and evolutionary
