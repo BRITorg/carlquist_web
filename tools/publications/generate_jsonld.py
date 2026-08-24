@@ -175,11 +175,13 @@ def build_entry(key, link_entry, row, slug, author_wikidata, journal_wikidata):
             "propertyID": "DOI",
             "value": row["DOI"],
         }
-    if row.get("page"):
-        entry["pagination"] = row["page"]
-
     if pub_type == "book":
         entry["@type"] = "Book"
+        # schema.org's `pagination` domain is Article, not Book/CreativeWork --
+        # a book's `page` value here is a whole-book page count, not a range
+        # within a container, so it maps to `numberOfPages` instead.
+        if row.get("page"):
+            entry["numberOfPages"] = row["page"]
         if row.get("publisher"):
             entry["publisher"] = {"@type": "Organization", "name": row["publisher"]}
         if row.get("container-ISBN"):
@@ -187,6 +189,8 @@ def build_entry(key, link_entry, row, slug, author_wikidata, journal_wikidata):
 
     elif pub_type == "chapter":
         entry["@type"] = "Chapter"
+        if row.get("page"):
+            entry["pagination"] = row["page"]
         book = {"@type": "Book", "name": row.get("container-title", "")}
         editors = people(row.get("editor", ""), author_wikidata)
         if editors:
@@ -199,6 +203,8 @@ def build_entry(key, link_entry, row, slug, author_wikidata, journal_wikidata):
 
     else:  # article-journal
         entry["@type"] = "ScholarlyArticle"
+        if row.get("page"):
+            entry["pagination"] = row["page"]
         journal_title = row.get("container-title", "")
         periodical = {"@type": "Periodical", "name": journal_title}
         if row.get("container-ISSN"):
