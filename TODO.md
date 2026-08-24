@@ -28,26 +28,6 @@
   - "Vessels in ferns: structural, ecological, and evolutionary
     significance" (2001)
 
-- Upstream "Anatomy of Guayana Mutisieae. Part II" (1958, Mem. N. Y. Bot.
-  Gard. 10:157-184) to the
-  [Carlquist Publications Dataset](https://github.com/BRITorg/carlquist_publications_dataset):
-  this is the root cause of why the site's now-fixed dead `<a href="#">PDF</a>`
-  link for it had no automated match — the dataset only has Part I (1957).
-  Wikidata's side of the gap is now closed (it has a dedicated item for Part
-  II, Q141167197, separate from Part I's Q139076661), and that link has been
-  added to the site's widget by hand alongside the existing BHL link. The
-  dataset addition is the remaining real fix; the manual widget is a stopgap
-  around that one gap. In the meantime the site's widget for it points at
-  `https://www.biodiversitylibrary.org/part/324546` (BHL item 150908, Mem.
-  N.Y. Bot. Gard. v.10, pages 157-184) and the Wikidata item above; see the
-  `unlinked-citation:1958. Anatomy of Guayana Mutisieae. Part II...`
-  entry in `tools/publications/publication-links.json` for how that match
-  was made. Once the record exists upstream in the dataset, re-run
-  `match_publications.py` so this citation gets picked up the same
-  automated way as the rest and the manual `publication-links.json` entry
-  and its widget (including the eventual Wikidata link) can be replaced
-  with the normal generated ones.
-
 - Add schema.org JSON-LD structured data for the publications on
   `biography-publications.html` (a `ScholarlyArticle` entry per citation,
   with `identifier` for the DOI, `sameAs` for the Wikidata record,

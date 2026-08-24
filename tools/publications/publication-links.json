@@ -2312,10 +2312,10 @@
     "wikidata": "https://www.wikidata.org/wiki/Q139119342"
   },
   "unlinked-citation:1958. Anatomy of Guayana Mutisieae. Part II. Mem. N. Y. Bot. Gard. 10:157-184.": {
-    "title": "Anatomy of the Guayana Mutisieae",
+    "title": "Anatomy of the Guayana Mutisieae. Part II",
     "year": 1958,
     "citation": "1958. Anatomy of Guayana Mutisieae. Part II. Mem. N. Y. Bot. Gard. 10:157-184.",
-    "note": "originally linked on the site with a dead href=\"#\" placeholder (not a real PDF path, so match_publications.py never saw it); BHL item 150908 (Mem. N.Y. Bot. Gard. v.10) segment 324546 spans pages 157-184, matching this citation's page range exactly; Wikidata later added a dedicated item for Part II (Q141167197), separate from Part I's Q139076661",
+    "note": "originally linked on the site with a dead href=\"#\" placeholder (not a real PDF path, so match_publications.py never saw it); now fully resolved upstream: the Carlquist Publications Dataset has a Part II record (distinct from Part I's Q139076661), citing Wikidata Q141167197 and BHL part/324546 (item 150908, Mem. N.Y. Bot. Gard. v.10, pages 157-184) as its sources, matching this citation exactly",
     "url": "https://www.biodiversitylibrary.org/part/324546",
     "wikidata": "https://www.wikidata.org/wiki/Q141167197"
   },
