@@ -47,3 +47,13 @@
   worth checking things like the left-nav hover menu (which relies on mouse
   hover, not touch), the lightbox popups, and whether the fixed-width layout
   causes horizontal scrolling or illegibly small text on a phone screen.
+  - Confirmed so far: none of the 43 pages have a `<meta name="viewport">`
+    tag (checked via `grep -l viewport sherwincarlquist.org/*.html`, zero
+    matches). Without one, mobile browsers render at a default desktop-width
+    virtual viewport (~980px) and zoom the whole page out to fit the screen,
+    so the site would load tiny and need pinch-zooming on a real phone
+    regardless of anything else. This alone is likely the single biggest
+    mobile fix (a `<meta name="viewport" content="width=device-width,
+    initial-scale=1">` tag on every page), but the hover-menu/lightbox/
+    fixed-width questions above are still open and need actual device or
+    DevTools-device-mode testing to answer.
