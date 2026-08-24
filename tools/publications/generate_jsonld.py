@@ -24,19 +24,32 @@ Data sources
   richer per-record metadata (container title, volume, issue, pages,
   authors, editors, publisher, ISSN, type). Joined to publication-links.json
   by Wikidata QID, which is a 1:1 clean match for all 360 current entries.
+- The same dataset's carlquist_authors.csv and carlquist_journals.csv:
+  separate reconciled tables mapping each as-cited author/editor name and
+  each journal title to its own Wikidata item, letting Person and
+  Periodical entities carry a `sameAs` link too (not just the publication
+  itself). Journal coverage is 100% for the entries in this graph; author
+  coverage is partial -- 22 as-cited names (mostly one-off editors of edited
+  volumes) have no reconciled Wikidata match and fall back to a plain name.
 
 Usage
 -----
     python3 generate_jsonld.py \\
         --links publication-links.json \\
         --dataset-csv /path/to/carlquist_publications.csv \\
+        --authors-csv /path/to/carlquist_authors.csv \\
+        --journals-csv /path/to/carlquist_journals.csv \\
         --out jsonld-preview.json \\
         --page-url https://britorg.github.io/carlquist_web/biography-publications.html
+
+If --authors-csv / --journals-csv are omitted, they're looked for as
+sibling files next to --dataset-csv (the dataset repo's normal layout).
 """
 
 import argparse
 import csv
 import json
+import os
 import re
 
 QID_RE = re.compile(r"Q\d+")
@@ -53,14 +66,20 @@ def parse_author_name(raw):
     return f"{first} {last}".strip()
 
 
-def people(raw):
+def people(raw, author_wikidata):
     if not raw:
         return []
-    return [
-        {"@type": "Person", "name": parse_author_name(name)}
-        for name in raw.split(";")
-        if name.strip()
-    ]
+    out = []
+    for name in raw.split(";"):
+        name = name.strip()
+        if not name:
+            continue
+        person = {"@type": "Person", "name": parse_author_name(name)}
+        wd = author_wikidata.get(name)
+        if wd:
+            person["sameAs"] = wd
+        out.append(person)
+    return out
 
 
 def load_dataset(path):
@@ -71,6 +90,28 @@ def load_dataset(path):
             if qid:
                 by_qid[qid] = row
     return by_qid
+
+
+def load_author_wikidata(path):
+    by_cited_name = {}
+    with open(path, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            cited = row.get("author-as-cited", "").strip()
+            wd = row.get("wikidata-url", "").strip()
+            if cited and wd:
+                by_cited_name[cited] = wd
+    return by_cited_name
+
+
+def load_journal_wikidata(path):
+    by_title = {}
+    with open(path, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            title = row.get("journal-title", "").strip()
+            wd = row.get("wikidata-url", "").strip()
+            if title and wd:
+                by_title[title] = wd
+    return by_title
 
 
 def qid_from_url(url):
@@ -100,10 +141,10 @@ def source_urls(link_entry, row):
     return out
 
 
-def build_entry(key, link_entry, row, slug):
+def build_entry(key, link_entry, row, slug, author_wikidata, journal_wikidata):
     pub_type = row.get("type", "article-journal")
     title = row.get("title") or link_entry.get("title", "")
-    authors = people(row.get("author", ""))
+    authors = people(row.get("author", ""), author_wikidata)
     date_published = row.get("issued") or str(row.get("year", link_entry.get("year", "")))
     entry = {
         "@id": f"#{slug}",
@@ -132,7 +173,7 @@ def build_entry(key, link_entry, row, slug):
     elif pub_type == "chapter":
         entry["@type"] = "Chapter"
         book = {"@type": "Book", "name": row.get("container-title", "")}
-        editors = people(row.get("editor", ""))
+        editors = people(row.get("editor", ""), author_wikidata)
         if editors:
             book["editor"] = editors
         if row.get("publisher"):
@@ -143,9 +184,13 @@ def build_entry(key, link_entry, row, slug):
 
     else:  # article-journal
         entry["@type"] = "ScholarlyArticle"
-        periodical = {"@type": "Periodical", "name": row.get("container-title", "")}
+        journal_title = row.get("container-title", "")
+        periodical = {"@type": "Periodical", "name": journal_title}
         if row.get("container-ISSN"):
             periodical["issn"] = row["container-ISSN"]
+        journal_wd = journal_wikidata.get(journal_title)
+        if journal_wd:
+            periodical["sameAs"] = journal_wd
         is_part_of = periodical
         if row.get("volume"):
             volume = {
@@ -175,6 +220,16 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--links", default="publication-links.json")
     ap.add_argument("--dataset-csv", required=True)
+    ap.add_argument(
+        "--authors-csv",
+        default=None,
+        help="Defaults to carlquist_authors.csv next to --dataset-csv.",
+    )
+    ap.add_argument(
+        "--journals-csv",
+        default=None,
+        help="Defaults to carlquist_journals.csv next to --dataset-csv.",
+    )
     ap.add_argument("--out", default="jsonld-preview.json")
     ap.add_argument(
         "--page-html",
@@ -193,6 +248,12 @@ def main():
     links = json.load(open(args.links, encoding="utf-8"))
     by_qid = load_dataset(args.dataset_csv)
 
+    dataset_dir = os.path.dirname(args.dataset_csv)
+    authors_csv = args.authors_csv or os.path.join(dataset_dir, "carlquist_authors.csv")
+    journals_csv = args.journals_csv or os.path.join(dataset_dir, "carlquist_journals.csv")
+    author_wikidata = load_author_wikidata(authors_csv)
+    journal_wikidata = load_journal_wikidata(journals_csv)
+
     page_html = open(args.page_html, encoding="utf-8").read()
     page_qids = set(re.findall(r"wikidata\.org/wiki/(Q\d+)", page_html))
 
@@ -209,7 +270,7 @@ def main():
             continue
         seen_qids.add(qid)
         slug = slugify(key, row, i)
-        graph.append(build_entry(key, link_entry, row, slug))
+        graph.append(build_entry(key, link_entry, row, slug, author_wikidata, journal_wikidata))
 
     doc = {
         "@context": "https://schema.org",
