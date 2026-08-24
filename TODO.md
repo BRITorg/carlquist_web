@@ -38,10 +38,6 @@
   page. All the underlying data already exists in
   `tools/publications/publication-links.json`.
 
-- Add a `sitemap.xml` to help search engines discover and crawl all pages
-  on the site — a small, general, all-upside addition independent of the
-  publication-specific work above.
-
 - Explore using Highwire Press `citation_*` meta tags (what Google Scholar
   specifically looks for) for the publications. These are page-level and
   designed for one work per page, which doesn't fit dumping them onto the
