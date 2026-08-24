@@ -49,3 +49,10 @@
   chosen not to build. The schema.org JSON-LD item above is the path
   forward instead, since it supports multiple entities on one page and
   reuses this site's existing single shared bibliography page.
+
+- Check out how the site looks and works on a mobile device. The markup
+  predates responsive design (hand-rolled Dreamweaver-era layout, fixed-width
+  tables/menus), so this needs an actual look rather than an assumption —
+  worth checking things like the left-nav hover menu (which relies on mouse
+  hover, not touch), the lightbox popups, and whether the fixed-width layout
+  causes horizontal scrolling or illegibly small text on a phone screen.
