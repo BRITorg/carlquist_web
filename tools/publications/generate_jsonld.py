@@ -2,9 +2,12 @@
 """Generate a schema.org JSON-LD block for the publications listed on
 biography-publications.html.
 
-EXPLORATORY — this script is a prototype (see TODO.md / the jsonld-publications
-branch), not wired into the site yet. It shows what the structured data
-would look like if we go ahead with it.
+This is the generator behind the <script type="application/ld+json"> block
+embedded in sherwincarlquist.org/biography-publications.html's <head>. Like
+the site's PDF-widget links, the JSON-LD is baked directly into the site's
+HTML rather than loaded at runtime, so re-run this script and re-embed its
+output by hand after any change to publication-links.json or the dataset
+(see the git history around when this was added for the embed step).
 
 Highwire Press `citation_*` meta tags (what Google Scholar looks for) were
 ruled out because Scholar's own inclusion guidelines require one article per

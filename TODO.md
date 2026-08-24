@@ -28,16 +28,6 @@
   - "Vessels in ferns: structural, ecological, and evolutionary
     significance" (2001)
 
-- Add schema.org JSON-LD structured data for the publications on
-  `biography-publications.html` (a `ScholarlyArticle` entry per citation,
-  with `identifier` for the DOI, `sameAs` for the Wikidata record,
-  `datePublished`, `author`, and `isPartOf` for the journal). This is the
-  format search engines actually parse for rich results and knowledge-graph
-  linking, and unlike Highwire `citation_*` meta tags it isn't limited to
-  one entity per page, so it fits this site's single shared bibliography
-  page. All the underlying data already exists in
-  `tools/publications/publication-links.json`.
-
 - Decided against Highwire Press `citation_*` meta tags: Google Scholar's own
   inclusion guidelines
   (https://scholar.google.com/intl/en/scholar/inclusion.html) require one
@@ -46,6 +36,7 @@
   abstracts on the same webpage" — and the tags "normally apply only to the
   exact page on which they're provided." That's a hard requirement, not a
   style preference, and it would mean a page per publication, which we've
-  chosen not to build. The schema.org JSON-LD item above is the path
-  forward instead, since it supports multiple entities on one page and
-  reuses this site's existing single shared bibliography page.
+  chosen not to build. schema.org JSON-LD (now added to
+  `biography-publications.html`, see `tools/publications/generate_jsonld.py`)
+  was the path taken instead, since it supports multiple entities on one
+  page and reuses this site's existing single shared bibliography page.
