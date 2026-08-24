@@ -119,6 +119,19 @@ def qid_from_url(url):
     return m.group(0) if m else None
 
 
+def full_date(raw):
+    """Pad a partial ISO date to YYYY-MM-DD: schema.org's Date type is valid
+    with reduced precision, but Google's Rich Results Test rejects anything
+    short of a full date. '1958' -> '1958-01-01', '1958-07' -> '1958-07-01'."""
+    raw = (raw or "").strip()
+    parts = raw.split("-")
+    if len(parts) == 1:
+        return f"{raw}-01-01"
+    if len(parts) == 2:
+        return f"{raw}-01"
+    return raw
+
+
 def source_urls(link_entry, row):
     urls = []
     if row.get("DOI"):
@@ -145,7 +158,9 @@ def build_entry(key, link_entry, row, slug, author_wikidata, journal_wikidata):
     pub_type = row.get("type", "article-journal")
     title = row.get("title") or link_entry.get("title", "")
     authors = people(row.get("author", ""), author_wikidata)
-    date_published = row.get("issued") or str(row.get("year", link_entry.get("year", "")))
+    date_published = full_date(
+        row.get("issued") or str(row.get("year", link_entry.get("year", "")))
+    )
     entry = {
         "@id": f"#{slug}",
         "name": title,
