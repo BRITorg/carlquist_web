@@ -38,10 +38,14 @@
   page. All the underlying data already exists in
   `tools/publications/publication-links.json`.
 
-- Explore using Highwire Press `citation_*` meta tags (what Google Scholar
-  specifically looks for) for the publications. These are page-level and
-  designed for one work per page, which doesn't fit dumping them onto the
-  existing shared `biography-publications.html` list — so this would mean
-  creating a separate dedicated citations page (or one page per
-  publication), linked from the site as its own resource, while leaving the
-  original bibliography page unchanged.
+- Decided against Highwire Press `citation_*` meta tags: Google Scholar's own
+  inclusion guidelines
+  (https://scholar.google.com/intl/en/scholar/inclusion.html) require one
+  article per URL — "Place each article and each abstract in a separate HTML
+  or PDF file. At this time, we're unable to effectively index multiple
+  abstracts on the same webpage" — and the tags "normally apply only to the
+  exact page on which they're provided." That's a hard requirement, not a
+  style preference, and it would mean a page per publication, which we've
+  chosen not to build. The schema.org JSON-LD item above is the path
+  forward instead, since it supports multiple entities on one page and
+  reuses this site's existing single shared bibliography page.
