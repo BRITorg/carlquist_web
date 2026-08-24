@@ -120,16 +120,23 @@ def qid_from_url(url):
 
 
 def full_date(raw):
-    """Pad a partial ISO date to YYYY-MM-DD: schema.org's Date type is valid
-    with reduced precision, but Google's Rich Results Test rejects anything
-    short of a full date. '1958' -> '1958-01-01', '1958-07' -> '1958-07-01'."""
+    """Pad a partial/date-only value to a full ISO 8601 datetime with a
+    timezone. schema.org's Date type accepts 'YYYY', 'YYYY-MM', or a bare
+    'YYYY-MM-DD' with no time component, but Google's Rich Results Test
+    flags anything short of a full datetime+timezone as "Invalid datetime
+    value" / "missing a timezone" on datePublished (confirmed by testing
+    against the live tool -- see the jsonld-publications branch history).
+    None of these are real publication timestamps, so pad with a synthetic
+    UTC midnight: '1958' -> '1958-01-01T00:00:00+00:00'."""
     raw = (raw or "").strip()
     parts = raw.split("-")
     if len(parts) == 1:
-        return f"{raw}-01-01"
-    if len(parts) == 2:
-        return f"{raw}-01"
-    return raw
+        date = f"{raw}-01-01"
+    elif len(parts) == 2:
+        date = f"{raw}-01"
+    else:
+        date = raw
+    return f"{date}T00:00:00+00:00"
 
 
 def source_urls(link_entry, row):
